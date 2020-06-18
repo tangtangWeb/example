@@ -1,0 +1,93 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var  a=false;
+        var  b=false;
+        var  c=false;
+        function hd(){
+            u.innerHTML='请输入用户名';
+            u.style.color='red'
+        }
+        function phd(){
+            p.innerHTML='请输入6-8位密码';
+            p.style.color='red'
+        }
+        function phds(){
+            ps.innerHTML='请再次输入6-8位密码';
+            ps.style.color='red'
+        }
+        function show(){
+            var str=uname.value;
+            if(str.length==0){
+                u.innerHTML="用户名不为空";
+                u.style.color='red';
+                a=false;
+            }else if(str.length>=6 && str.length<=10){
+                u.innerHTML="输入正确";
+                u.style.color='green';
+                a=true;
+            }else{
+                u.innerHTML="输入格式错误";
+                u.style.color='red';
+                a=false;
+            }
+        }
+        // 密码框离开验证
+        function shows(){
+            var str=upwd.value;
+            if(str.length==0){
+                p.innerHTML="用户名不能为空";
+                p.style.color='red';
+                b=false;
+            }else if(str.length>=6 && str.length<=8){
+                p.innerHTML="输入正确";
+                p.style.color='green';
+                b=true;
+            }else{
+                p.innerHTML="输入格式错误";
+                p.style.color='red';
+                b=false;
+            }
+        }
+        // 密码框离开再次验证
+        function showps(){
+            var str=upwds.value;
+            var strs=upwd.value;
+            if(str==strs){
+                ps.innerHTML="验证成功";
+                ps.style.color='green';
+                c=true;
+            }else{
+                ps.innerHTML="输入错误,验证失败";
+                ps.style.color='red';
+                c=false;
+            }
+        }
+        // 登录验证
+        function login(){
+            if(a==true && b==true && c==true){
+                alert("注册成功");
+            }else{
+                alert("输入错误,请重新输入");
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="uname">用户名</label>
+    <input onblur="show()" onfocus="hd()" type="text" placeholder="请输入账号" id="uname">
+    <span id="u"></span><br>
+    <label for="upwd">密码</label>
+    <input onblur="shows()" onfocus="phd()" type="password" placeholder="请输入密码" id="upwd">
+    <span id="p"></span><br>
+    <label for="upwds">确认密码</label>
+    <input onblur="showps()" onfocus="phds()" type="password" placeholder="请再次输入密码" id="upwds">
+    <span id="ps"></span>
+    <br>
+    <button onclick="login()">登录</button>
+</body>
+</html>
